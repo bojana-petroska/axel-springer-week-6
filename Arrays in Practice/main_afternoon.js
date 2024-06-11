@@ -41,7 +41,7 @@ function addColorsList() {
     colorNames.push(newColor);
     updateColorList();
     console.log(colorNames)
-    //addColors.value = "";
+    addColors.value = "";
 }
 
 addColorsButton.addEventListener('click', addColorsList)
@@ -106,5 +106,155 @@ removeAnimalButton.addEventListener('click', () => {
 // Objective: Remove a specific element from an array using an input field and a button.
 // Instructions:
 // 1. Create an array with the names of four cities.
+const cities = ['Skopje', 'Berlin', 'Istanbul', 'Belgrade'];
 // 2. Add an input field and a button to the HTML.
 // 3. Use JavaScript to remove the specified city from the array and update the list.
+
+const cityList = document.getElementById('city-list');
+const cityInput = document.getElementById('city-input');
+const removeACity = document.getElementById('city-button');
+const positionInput = document.getElementById('position-input');
+const addACityButton = document.getElementById('city-button-add');
+
+function updateCityList() {
+    cityList.innerHTML = "";
+    cities.forEach(city => {
+        const listACity = document.createElement('li'); 
+        listACity.textContent = city;
+        cityList.appendChild(listACity);
+    })
+}
+
+updateCityList();
+
+removeACity.addEventListener('click', () => {
+    const cityToDelete = cityInput.value;
+    const indexOfACity = cities.indexOf(cityToDelete);
+
+    if (indexOfACity !== -1) {
+        cities.splice(indexOfACity, 1);
+        console.log(cities);
+        updateCityList();
+    }
+
+    cityInput.value = "";
+
+})
+
+addACityButton.addEventListener('click', () => {
+    const newCityAdded = positionInput.value;
+    cities.splice(2, 0, newCityAdded);
+
+    console.log(newCityAdded);
+    updateCityList();
+    positionInput.value = '';
+})
+
+
+//Task 7: Filter Array Elements by Genre
+
+const movies = [
+    {
+        title: "The Shawshank Redemption",
+        genre: "Drama"
+    },
+    {
+        title: "The Godfather",
+        genre: "Crime"
+    },
+    {
+        title: "The Dark Knight",
+        genre: "Action"
+    },
+    {
+        title: "Pulp Fiction",
+        genre: "Crime"
+    },
+    {
+        title: "The Lord of the Rings: The Return of the King",
+        genre: "Fantasy"
+    },
+    {
+        title: "Forrest Gump",
+        genre: "Drama"
+    },
+    {
+        title: "Fight Club",
+        genre: "Drama"
+    },
+    {
+        title: "The Matrix",
+        genre: "Science Fiction"
+    },
+    {
+        title: "Jurassic Park",
+        genre: "Adventure"
+    },
+    {
+        title: "Titanic",
+        genre: "Romance"
+    }
+];
+
+const moviesList = document.getElementById('movies-list');
+const dropdownMenu = document.getElementById('select-movie');
+
+function listTheMovies(filteredMovies) {
+    moviesList.innerHTML = '';
+
+    filteredMovies.forEach(movie => {
+        const listAMovie = document.createElement('li');
+        listAMovie.textContent = `${movie.title} --- ${movie.genre}`;
+        moviesList.appendChild(listAMovie);
+    });
+}
+
+listTheMovies(movies);
+
+function filterMoviesByGenre(selectedGenre) {
+    const filteredMovies = movies.filter(movie => movie.genre === selectedGenre);
+    return filteredMovies;
+}
+
+dropdownMenu.addEventListener('change', () => {
+    const selectedGenre = dropdownMenu.value;
+    const filteredMovies = filterMoviesByGenre(selectedGenre);
+    listTheMovies(filteredMovies);
+    console.log('bo');
+})
+
+
+//Task 8: Sort Array Elements
+
+const sports = ['Handball', 'Running', 'Yoga', 'Swimming', 'Gymnastics', 'Bouldering', 'Skiing', 'Surfing', 'Cycling'];
+
+const sportsDisplayed = document.getElementById('sport-list');
+const ascendingSports = document.getElementById('sort-ascending');
+const descendingSports = document.getElementById('sort-descending');
+
+function listTheSports() {
+    sportsDisplayed.innerHTML = "";
+    
+    sports.forEach(sport => {
+        const listASport = document.createElement('li');
+        listASport.textContent = sport;
+        sportsDisplayed.appendChild(listASport);
+    })
+}
+
+listTheSports();
+
+ascendingSports.addEventListener('click', () => {
+    const sortedAscending = sports.sort();
+    listTheSports(sortedAscending);
+    console.log(sortedAscending)
+});
+
+descendingSports.addEventListener('click', () => {
+    const sortedAscending = sports.sort();
+    const sortedDescending = sortedAscending.reverse();
+    listTheSports(sortedDescending);
+
+})
+
+
