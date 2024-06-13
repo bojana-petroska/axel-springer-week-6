@@ -29,10 +29,24 @@ function addCity() {
 
 function updateCityData() {
     cityDataDiv.innerHTML = '';
-    
+
     cityPopulations.forEach((population, city) => {
         cityDataDiv.innerHTML += `<p>${city}: ${population} people.</p>`
     });
 }
 
+//create set
+
+const mySet = new Set();
+
+mySet.add('apple');
+mySet.add('orange');
+mySet.add('banana');
+mySet.add('apple');
+
+const resultParagraph = document.getElementById('result');
+resultParagraph.textContent = 'Text set contains:' + [...mySet].join(', ');
+
+const hasApple = mySet.has('apple');
+console.log('Has apple: ', hasApple)
 
