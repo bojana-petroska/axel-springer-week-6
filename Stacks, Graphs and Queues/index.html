@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0" />
     <title>Document</title>
     <script defer src="main.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Stack Operations</h2>
     <button onclick="push()">Push</button>
     <button onclick="pop()">Pop</button>
     <p>Stack: <span id="stack"></span></p>
-</body>
+
+    <h2>Queue Operations</h2>
+    <button onclick="enqueue()">Enqueue</button>
+    <button onclick="dequeue()">Dequeue</button>
+    <p>Queue: <span id="queue"></span></p>
+
+    <h2>Stack Implementation</h2>
+    <input type="text" id="stack-input" placeholder="Enter an element" />
+    <button onclick="pushElement()">Push</button>
+    <button onclick="popElement()">Pop</button>
+    <ul id="stack-list"></ul>
+
+    <h2>Queue Implementation</h2>
+    <input type="text" id="queue-input" placeholder="Enter an element" />
+    <button onclick="enqueueElement()">Enqueue</button>
+    <button onclick="dequeueElement()">Dequeue</button>
+    <ul id="queue-list"></ul>
+  </body>
 </html>
