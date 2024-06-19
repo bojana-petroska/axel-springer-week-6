@@ -16,7 +16,7 @@ const groupList2 = document.getElementById('group-list-2');
 const arrayMap = Array.from(studentNames.entries());
 console.log(arrayMap);
 const groupMap1 = new Map(arrayMap.slice(0, 3));
-const groupMap2 = new Map(arrayMap.slice(3, 5));
+const groupMap2 = new Map(arrayMap.slice(3));
 console.log(groupMap1);
 console.log(groupMap2);
 
@@ -68,13 +68,16 @@ uniqueStudentNames1.add('bo');
 uniqueStudentNames1.add('george');
 uniqueStudentNames1.add('elena');
 uniqueStudentNames1.add('ejs');
+uniqueStudentNames1.add('mia');
 uniqueStudentNames2.add('lefter');
 uniqueStudentNames2.add('done');
 uniqueStudentNames2.add('mia');
 
-const combinedStudentNames = [...uniqueStudentNames1, ...uniqueStudentNames2];
+const combinedStudentNames = new Set([...uniqueStudentNames1, ...uniqueStudentNames2]);
 
 combinedNamesList.textContent =
   'Combined list of unique names are: ' + [...combinedStudentNames].join(', ');
 
 console.log(combinedStudentNames);
+
+
